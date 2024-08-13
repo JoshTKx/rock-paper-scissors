@@ -79,25 +79,59 @@ function playRound(humanChoice,computerChoice){
     }
 
 }
+const score = document.querySelector(".score");
 
-function playgame(){
-    for(let i = 0; i < 5; i++){
-        humanChoice = getHumanChoice();
-        computerChoice = getComputerChoice();
-        playRound(humanChoice,computerChoice);
-        console.log("HUMAN: " + humanScore +"      COM: "+computerScore);
-    }
+const buttons = document.querySelectorAll("button");
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+const pscore = document.querySelector(".p-score");
+const cscore = document.querySelector(".c-score");
 
-    if(computerScore > humanScore){
-        console.log("You've been Defeated!");
-    }
-    else if (humanScore > computerScore){
-        console.log("You Defeated the Computer!");
-    }
-    else{
-        console.log("It's a Draw!");
-    }
+rock.addEventListener("click", () =>{
+    playRound("rock",getComputerChoice());
+});
+paper.addEventListener("click", () =>{
+    playRound("paper",getComputerChoice());   
+});
+scissors.addEventListener("click", () =>{
+    playRound("scissors",getComputerChoice());
+});
 
-}
+buttons.forEach( (button) =>{
+    button.addEventListener("click", () =>{
+        pscore.textContent =  humanScore;
+        cscore.textContent =  computerScore;
+        if (computerScore >= 5){
+            alert("You've been Defeated...");
+            window.location.reload();
+        }
+        if (humanScore >= 5){
+            alert("You Defeated the Computer!");
+            window.location.reload();
+        }
+    }); 
+});
 
-console.log(playgame());
+
+// function playgame(){
+//     for(let i = 0; i < 5; i++){
+//         humanChoice = getHumanChoice();
+//         computerChoice = getComputerChoice();
+//         playRound(humanChoice,computerChoice);
+//         console.log("HUMAN: " + humanScore +"      COM: "+computerScore);
+//     }
+
+//     if(computerScore > humanScore){
+//         console.log("You've been Defeated!");
+//     }
+//     else if (humanScore > computerScore){
+//         console.log("You Defeated the Computer!");
+//     }
+//     else{
+//         console.log("It's a Draw!");
+//     }
+
+// }
+
+// console.log(playgame());
