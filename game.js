@@ -32,61 +32,78 @@ function getHumanChoice(){
 
 let humanScore = 0;
 let computerScore = 0;
-
-
-
-function playRound(humanChoice,computerChoice){
-    if (humanChoice == "rock"){
-        if (computerChoice == "paper"){
-            console.log("You lose! Paper beats Rock");
-            computerScore++;
-        }
-        else if (computerChoice == "scissors"){
-            console.log("You Win! Rock beats Scissors");
-            humanScore++;
-        }
-        else{
-            console.log("You Draw! No one wins");
-        }
-    }
-    else if (humanChoice == "paper"){
-        if (computerChoice == "paper"){
-            console.log("You Draw! No one wins");
-        }
-        else if (computerChoice == "scissors"){
-            console.log("You Lose! Scissors beats Paper");
-            computerScore++;
-        }
-        else{
-            console.log("You Win! Paper beats Rock");
-            humanScore++;
-        }
-    }
-        
-    else{
-        if (computerChoice == "paper"){
-            console.log("You Win! Scissors beats Paper");
-            humanScore++;
-        }
-        else if (computerChoice == "scissors"){
-            console.log("You Draw! No one wins");
-            
-        }
-        else{
-            console.log("You Lose! Rock beats Scissors");
-            computerScore++;
-        }
-    }
-
-}
 const score = document.querySelector(".score");
-
 const buttons = document.querySelectorAll("button");
 const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
 const pscore = document.querySelector(".p-score");
 const cscore = document.querySelector(".c-score");
+const c_choice = document.querySelector(".c-choice");
+const p_choice = document.querySelector(".p-choice");
+const hunter_img = "https://plus.unsplash.com/premium_vector-1723552125865-0b67b7f22750?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NTZ8fHxlbnwwfHx8fHw%3D";
+const robber_img = "https://plus.unsplash.com/premium_vector-1723550780941-bd386c128cb2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Njh8fHxlbnwwfHx8fHw%3D";
+const pant_img = "https://plus.unsplash.com/premium_vector-1723274509352-2727dcc37e7f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTg5fHx8ZW58MHx8fHx8";
+const vs_txt = document.querySelector(".vs-text");
+
+
+function playRound(humanChoice,computerChoice){
+    if (humanChoice == "rock"){
+        p_choice.src=hunter_img;
+        if (computerChoice == "paper"){
+            c_choice.src = robber_img;
+            vs_txt.textContent = "You Lose! Robber takes the Hunter's Gun";
+            computerScore++;
+        }
+        else if (computerChoice == "scissors"){
+            c_choice.src = pant_img;
+            vs_txt.textContent = "You Win! Hunter kills the Panther";
+            humanScore++;
+        }
+        else{
+            c_choice.src = hunter_img;
+            vs_txt.textContent = "It's a Tie";
+        }
+    }
+    else if (humanChoice == "paper"){
+        p_choice.src = robber_img;
+        if (computerChoice == "paper"){
+            c_choice.src = robber_img;
+            vs_txt.textContent = "It's a Tie";
+        }
+        else if (computerChoice == "scissors"){
+            c_choice.src = pant_img;
+            vs_txt.textContent = "You Lose! Panther kills the Robber";
+            computerScore++;
+        }
+        else{
+            c_choice.src = hunter_img;
+            vs_txt.textContent = "You Win! Robber takes the Hunter's Gun";
+            humanScore++;
+        }
+    }
+        
+    else{
+        p_choice.src = pant_img;
+        if (computerChoice == "paper"){
+            c_choice.src = hunter_img;
+            vs_txt.textContent = "You Win! Panther kills the Robber";
+            humanScore++;
+        }
+        else if (computerChoice == "scissors"){
+            c_choice.src = pant_img;
+            vs_txt.textContent = "It's a Tie";
+            
+        }
+        else{
+            c_choice.src = pant_img;
+            vs_txt.textContent = "You Lose! Hunter kills the Panther";
+            computerScore++;
+        }
+    }
+
+}
+
 
 rock.addEventListener("click", () =>{
     playRound("rock",getComputerChoice());
