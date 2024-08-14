@@ -52,12 +52,12 @@ function playRound(humanChoice,computerChoice){
         p_choice.src=hunter_img;
         if (computerChoice == "paper"){
             c_choice.src = robber_img;
-            vs_txt.textContent = "You Lose! Robber takes the Hunter's Gun";
+            vs_txt.textContent = "You Lose! Robber took your Gun";
             computerScore++;
         }
         else if (computerChoice == "scissors"){
             c_choice.src = pant_img;
-            vs_txt.textContent = "You Win! Hunter kills the Panther";
+            vs_txt.textContent = "You Win! You shot the Panther";
             humanScore++;
         }
         else{
@@ -73,12 +73,12 @@ function playRound(humanChoice,computerChoice){
         }
         else if (computerChoice == "scissors"){
             c_choice.src = pant_img;
-            vs_txt.textContent = "You Lose! Panther kills the Robber";
+            vs_txt.textContent = "You Lose! Panther attacks you from behind";
             computerScore++;
         }
         else{
             c_choice.src = hunter_img;
-            vs_txt.textContent = "You Win! Robber takes the Hunter's Gun";
+            vs_txt.textContent = "You Win! You take Hunter's Gun";
             humanScore++;
         }
     }
@@ -86,8 +86,8 @@ function playRound(humanChoice,computerChoice){
     else{
         p_choice.src = pant_img;
         if (computerChoice == "paper"){
-            c_choice.src = hunter_img;
-            vs_txt.textContent = "You Win! Panther kills the Robber";
+            c_choice.src = robber_img;
+            vs_txt.textContent = "You Win! You pounce on the Robber from behind";
             humanScore++;
         }
         else if (computerChoice == "scissors"){
@@ -96,8 +96,8 @@ function playRound(humanChoice,computerChoice){
             
         }
         else{
-            c_choice.src = pant_img;
-            vs_txt.textContent = "You Lose! Hunter kills the Panther";
+            c_choice.src = hunter_img;
+            vs_txt.textContent = "You Lose! You were shot by the Hunter";
             computerScore++;
         }
     }
@@ -130,25 +130,3 @@ buttons.forEach( (button) =>{
     }); 
 });
 
-
-// function playgame(){
-//     for(let i = 0; i < 5; i++){
-//         humanChoice = getHumanChoice();
-//         computerChoice = getComputerChoice();
-//         playRound(humanChoice,computerChoice);
-//         console.log("HUMAN: " + humanScore +"      COM: "+computerScore);
-//     }
-
-//     if(computerScore > humanScore){
-//         console.log("You've been Defeated!");
-//     }
-//     else if (humanScore > computerScore){
-//         console.log("You Defeated the Computer!");
-//     }
-//     else{
-//         console.log("It's a Draw!");
-//     }
-
-// }
-
-// console.log(playgame());
